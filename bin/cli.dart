@@ -1,19 +1,13 @@
 import 'dart:io';
 import 'package:http/http.dart' as http;
+import 'package:command_runner/command_runner.dart';
 
 const version = '0.0.1';
 
-void main(List<String> arguments) {
-  if (arguments.isEmpty || arguments[0] == 'help') {
-    printUsage();
-  } else if (arguments[0] == 'version') {
-    print('Dartpedia CLI version $version!');
-  } else if (arguments[0] == 'wikipedia') {
-    final inputArgs = arguments.length > 1 ? arguments.sublist(1) : null;
-    searchWikipedia(inputArgs);
-  } else {
-    printUsage();
-  }
+void main(List<String> arguments) async {
+  // Now uses command_runner package
+  final runner = CommandRunner();
+  await runner.run(arguments);
 }
 
 void searchWikipedia(List<String>? arguments) async {
