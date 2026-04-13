@@ -6,7 +6,7 @@ const version = '0.0.1';
 
 void main(List<String> arguments) async {
   // Now uses command_runner package
-  final runner = CommandRunner();
+  final runner = CommandRunner()..addCommand(HelpCommand());
   await runner.run(arguments);
 }
 
